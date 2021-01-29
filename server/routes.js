@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { loadLoginPage } = require('./controllers/loginController');
+const { getUserData } = require('./controllers/loginController');
+const { catchErrors } = require('./handlers/errorHandlers');
 
-router.get('/', loadLoginPage);
+router.get('/get-user-data', catchErrors(getUserData));
 
 module.exports = router;

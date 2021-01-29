@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Store = mongoose.model('Store');
 
-module.exports.loadLoginPage = (req, res) => {
-    console.log('Page loading');
+module.exports.getUserData = (req, res) => {
+    console.log('Getting user data');
 };
