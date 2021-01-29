@@ -1,5 +1,7 @@
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import 'normalize.css';
+import axios from 'axios';
 
 const AppStyles = styled.div`
     display: flex;
@@ -20,6 +22,14 @@ const AppStyles = styled.div`
 `;
 
 export default function App() {
+    useEffect(() => {
+        (async () => {
+            const { data } = await axios.get('/get-user-data');
+            console.log('data on page load: ', data.message);
+        }
+        )();
+    }, []);
+
     return (
         <AppStyles>
             <div>Group Video Chat</div>
