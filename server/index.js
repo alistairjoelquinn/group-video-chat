@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
-mongoose.connect(require('./secrets'));
+mongoose.connect(require('./secrets'), {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 
 mongoose.connection.on('error', (err) => console.error(`Error connecting to mongoDB → ${err.message}`));
 
