@@ -5,7 +5,7 @@ module.exports.catchErrors = (fn) => {
 };
 
 module.exports.developmentErrors = (err, req, res, next) => {
-    console.error('err: ', err);
+    console.error('Error in DEVELOPMENT: ', err);
     res.json({
         message: err.message,
         status: err.status
@@ -13,6 +13,6 @@ module.exports.developmentErrors = (err, req, res, next) => {
 };
 
 exports.productionErrors = (err, req, res, next) => {
-    console.error('err: ', err);
-    res.json({ prodError: err.status || 500 });
+    console.error('Error in PRODUCTION: ', err);
+    res.json({ status: err.status || 500 });
 };
