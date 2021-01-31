@@ -1,16 +1,16 @@
-const express = require("express");
-const app = express();
-const compression = require("compression");
-const path = require("path");
+const mongoose = require('mongoose');
+mongoose.connect(require('./secrets'), {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 
-const routes = require('./routes');
-const { developmentErrors } = require('./handlers/errorHandlers');
+mongoose.connection.on('error', (err) => console.error(`Error connecting to mongoDB → ${err.message}`));
 
-app.use(compression());
-app.use(express.static(path.join(__dirname, "..", "client", "public")));
+require('./models/Store');
 
-app.use('/', routes);
+const app = require('./app');
+app.set('port', process.env.PORT || 3001);
 
-app.use(developmentErrors);
-
-module.exports = app;
+const server = app.listen(
+    app.get('port'), () => console.log(`Server listening on PORT ${server.address().port}`)
+);
