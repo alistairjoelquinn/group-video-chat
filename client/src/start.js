@@ -1,4 +1,13 @@
 import ReactDOM from 'react-dom';
 import App from './App';
+import Login from './Login';
 
-ReactDOM.render(<App />, document.querySelector('main'));
+let elem;
+
+if (location.pathname === '/welcome') {
+    elem = <Login />;
+} else {
+    elem = <App />;
+}
+
+ReactDOM.render(elem, document.querySelector('main'));
