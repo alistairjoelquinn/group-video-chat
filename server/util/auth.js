@@ -10,5 +10,3 @@ module.exports.compare = (password, hash) => {
     return compare(password, hash)
         .then(isMatch => isMatch);
 };
-
-
