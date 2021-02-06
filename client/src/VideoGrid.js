@@ -6,7 +6,7 @@ const VideoGridStyles = styled.div`
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 2rem;
-    padding: 2rem;
+    padding: 3rem;
 `;
 
 const SingleVideoStyles = styled.div`

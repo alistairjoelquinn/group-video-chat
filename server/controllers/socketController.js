@@ -1,5 +1,8 @@
 const onlineUsers = {};
-const chatMessages = [];
+const chatMessages = [{
+    name: 'Alistair',
+    message: 'hello there'
+}];
 
 module.exports = (io) => {
     io.on('connection', (socket) => {

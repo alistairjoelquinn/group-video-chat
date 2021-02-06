@@ -8,6 +8,6 @@ export const init = ({ dispatch }) => {
     if (!socket) {
         socket = io.connect();
     }
-    socket.on('chatMessages', msgs => dispatch(getMessages(msgs)));
-    socket.on('chatMessage', msg => dispatch(chatMessage(msg)));
+    socket.on('priorChatMessages', msgs => dispatch(getMessages(msgs)));
+    socket.on('newChatMessage', msg => dispatch(chatMessage(msg)));
 };

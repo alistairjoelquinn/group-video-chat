@@ -1,22 +1,49 @@
 import { useCallback } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { Logout } from 'heroicons-react';
 
 import { logUserOut } from "../store/actions";
 import axios from './axios';
+import { socket } from './socket';
 
 const ChatStyles = styled.div`
-    button {
+    font-size: 2rem;
+    padding: 3rem;
+    padding-left: 0;
+    .button {
         position: absolute;
-        top: 1rem;
-        right: 1rem;
+        top: 0.3rem;
+        right: 0.3rem;
+    }
+`;
+
+const ChatContainerStyles = styled.div`
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    align-items: center;
+    justify-content: flex-end;
+    textarea {
+        width: 90%;
+        margin-bottom: 5%;
         font-size: 2rem;
-        height: 3rem;
+        color: var(--dark);
+    }
+`;
+
+const SingleChatMessage = styled.div`
+    width: 90%;
+    .name {
+        color: var(--orange);
     }
 `;
 
 const Chat = () => {
     const dispatch = useDispatch();
+    const chatMessages = useSelector(state => state.chatMessages);
 
     const logoutHandler = useCallback(async () => {
         const { data } = await axios.get('/logout');
@@ -26,10 +53,31 @@ const Chat = () => {
         }
     }, []);
 
+    const keyCheck = useCallback(e => {
+        if (e.key === 'Enter' && e.target.value) {
+            e.preventDefault();
+            socket.emit('chatMessage', e.target.value);
+            e.target.value = '';
+        }
+    }, []);
+
     return (
         <ChatStyles>
-            <button onClick={() => logoutHandler()}>Log out</button>
-
+            <div className="button" onClick={() => logoutHandler()} >
+                <Logout />
+            </div>
+            <ChatContainerStyles>
+                {chatMessages.map(message => (
+                    <SingleChatMessage key={message.message}>
+                        <span className="name">{message.name}: </span>
+                        <span>{message.message}</span>
+                    </SingleChatMessage>
+                ))}
+                <textarea
+                    placeholder="Enter a chat message here!"
+                    onKeyDown={keyCheck}
+                />
+            </ChatContainerStyles>
         </ChatStyles>
     );
 };

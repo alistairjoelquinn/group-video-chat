@@ -21,8 +21,6 @@ const AppStyles = styled.div`
     color: var(--yellow);
     div {
         font-family: pangolin;
-        font-size: 40px;
-        font-weight: bold;
     }
 `;
 
