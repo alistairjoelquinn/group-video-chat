@@ -85,6 +85,8 @@ export default (state = initialState, action) => {
         };
     }
     if (action.type === "GET_MESSAGES") {
+        console.log('running');
+        console.log('action.msgs: ', action.msgs);
         return {
             ...state,
             chatMessages: action.msgs
