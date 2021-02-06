@@ -9,8 +9,17 @@ mongoose.connection.on('error', (err) => console.error(`Error connecting to mong
 require('./models/Store');
 
 const app = require('./app');
-app.set('port', process.env.PORT || 3001);
 
-const server = app.listen(
-    app.get('port'), () => console.log(`Server listening on PORT ${server.address().port}`)
+const server = require('http').Server(app);
+const io = require('socket.io')(server, {
+    allowRequest: (req, callback) =>
+        callback(null, req.headers.referer.startsWith("http://localhost:3000"))
+});
+
+server.listen(
+    process.env.PORT || 3001, () => console.log(`Server listening`)
 );
+
+io.on('connection', function (socket) {
+    console.log(`socket with the id ${socket.id} is now connected`);
+});

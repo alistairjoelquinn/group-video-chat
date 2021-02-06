@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
+import { init } from './socket';
 import App from './App';
 import Login from './Login';
 import Reducer from '../store/reducer';
@@ -15,6 +16,7 @@ let elem;
 if (location.pathname === '/login') {
     elem = <Login />;
 } else {
+    init(store);
     elem = (
         <Provider store={store}>
             <App />
