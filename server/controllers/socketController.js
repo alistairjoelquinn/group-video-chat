@@ -1,3 +1,6 @@
+const mongoose = require('mongoose');
+const Store = mongoose.model('Store');
+
 const onlineUsers = {};
 const chatMessages = [{
     name: 'Alistair',
@@ -12,6 +15,10 @@ module.exports = (io) => {
         onlineUsers[userId] = socket.id;
         io.to(socket.id).emit('priorChatMessages', chatMessages);
 
-
+        socket.on('chatMessage', async msg => {
+            const { name } = await Store.findOne({ _id: userId });
+            chatMessages.push();
+            io.emit('newChatMessage', { name, message: msg });
+        });
     });
 };

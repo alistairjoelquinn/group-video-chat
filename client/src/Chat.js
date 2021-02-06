@@ -2,6 +2,7 @@ import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { Logout } from 'heroicons-react';
+import { v4 } from 'uuid';
 
 import { logUserOut } from "../store/actions";
 import axios from './axios';
@@ -68,7 +69,7 @@ const Chat = () => {
             </div>
             <ChatContainerStyles>
                 {chatMessages.map(message => (
-                    <SingleChatMessage key={message.message}>
+                    <SingleChatMessage key={v4()}>
                         <span className="name">{message.name}: </span>
                         <span>{message.message}</span>
                     </SingleChatMessage>
