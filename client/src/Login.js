@@ -1,5 +1,11 @@
 import { useState } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
+
+import Typography from './styles/Typography';
+import GlobalStyles from './styles/GlobalStyles';
+
+const LoginStyles = styled.div``;
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -14,7 +20,9 @@ const Login = () => {
     };
 
     return (
-        <div>
+        <LoginStyles>
+            <GlobalStyles />
+            <Typography />
             {error && (
                 <div className="error">Oops! You made a mistake.</div>
             )}
@@ -35,7 +43,7 @@ const Login = () => {
             <button onClick={() => submitHandler()}>
                 Login
             </button>
-        </div>
+        </LoginStyles>
     );
 };
 

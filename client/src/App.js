@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import 'normalize.css';
 
 import { retrieveUserData } from '../store/actions';
+import Typography from './styles/Typography';
+import GlobalStyles from './styles/GlobalStyles';
 
 const AppStyles = styled.div`
     display: flex;
@@ -13,13 +15,12 @@ const AppStyles = styled.div`
     margin: 0;
     height: 100vh;
     width: 100vw;
-    background-color: dodgerblue;
-    color: antiquewhite;
+    background-color: var(--dark);
+    color: var(--yellow);
     div {
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: pangolin;
         font-size: 40px;
         font-weight: bold;
-        -webkit-text-stroke: 1px tomato;
     }
 `;
 
@@ -32,6 +33,8 @@ export default function App() {
 
     return (
         <AppStyles>
+            <GlobalStyles />
+            <Typography />
             <div>Group Video Chat</div>
         </AppStyles>
     );
