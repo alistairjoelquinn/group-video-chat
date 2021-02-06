@@ -6,6 +6,8 @@ import 'normalize.css';
 import { retrieveUserData } from '../store/actions';
 import Typography from './styles/Typography';
 import GlobalStyles from './styles/GlobalStyles';
+import VideoGrid from './VideoGrid';
+import Chat from './Chat';
 
 const AppStyles = styled.div`
     display: flex;
@@ -35,7 +37,8 @@ export default function App() {
         <AppStyles>
             <GlobalStyles />
             <Typography />
-            <div>Group Video Chat</div>
+            <VideoGrid />
+            <Chat />
         </AppStyles>
     );
 }
