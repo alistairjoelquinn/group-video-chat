@@ -26,6 +26,13 @@ const AppStyles = styled.div`
     }
 `;
 
+const AppGrid = styled.div`
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 75vw 25vw;
+`;
+
 export default function App() {
     const dispatch = useDispatch();
 
@@ -37,8 +44,10 @@ export default function App() {
         <AppStyles>
             <GlobalStyles />
             <Typography />
-            <VideoGrid />
-            <Chat />
+            <AppGrid>
+                <VideoGrid />
+                <Chat />
+            </AppGrid>
         </AppStyles>
     );
 }
