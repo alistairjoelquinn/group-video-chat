@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const compression = require("compression");
 const path = require("path");
+const csurf = require('csurf');
 const cookieSession = require('cookie-session');
 const cookieSessionMiddleware = cookieSession(require('./env/cookie-secrets'));
 
@@ -11,6 +12,11 @@ const { developmentErrors, productionErrors } = require('./handlers/errorHandler
 app.use(express.json());
 app.use(compression());
 app.use(cookieSessionMiddleware);
+app.use(csurf());
+app.use(function (req, res, next) {
+    res.cookie('mytoken', req.csrfToken());
+    next();
+});
 app.use(express.static(path.join(__dirname, "..", "client", "public")));
 
 app.use('/', routes);
