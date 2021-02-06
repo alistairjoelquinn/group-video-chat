@@ -3,32 +3,38 @@ const initialState = {
         {
             userId: '6016fc14885fda4ce8a81dfc',
             name: 'Alistair',
-            online: false
+            online: false,
+            image: '/user.png'
         },
         {
             userId: '6016fd542eb90f4d64b4c5e0',
             name: 'Katie',
-            online: false
+            online: false,
+            image: '/user.png'
         },
         {
             userId: '6016fd9c19338d4d902a3538',
             name: 'Mum',
-            online: false
+            online: false,
+            image: '/user.png'
         },
         {
             userId: '6016fd9c19338d4d902a3539',
             name: 'Dad',
-            online: false
+            online: false,
+            image: '/user.png'
         },
         {
             userId: '6016fd9c19338d4d902a353a',
             name: 'Fizz',
-            online: false
+            online: false,
+            image: '/user.png'
         },
         {
             userId: '6016fd9d19338d4d902a353b',
             name: 'Abi',
-            online: false
+            online: false,
+            image: '/user.png'
         },
     ],
     currentUser: {

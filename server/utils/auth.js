@@ -1,10 +1,4 @@
-const { genSalt, hash, compare } = require('bcrypt');
-
-module.exports.hash = password => {
-    return genSalt().then(salt => {
-        return hash(password, salt);
-    });
-};
+const { compare } = require('bcrypt');
 
 module.exports.compare = (password, hash) => {
     return compare(password, hash)

@@ -6,7 +6,13 @@ import { logUserOut } from "../store/actions";
 import axios from './axios';
 
 const ChatStyles = styled.div`
-    border: 2px solid green;
+    button {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        font-size: 2rem;
+        height: 3rem;
+    }
 `;
 
 const Chat = () => {
@@ -22,7 +28,6 @@ const Chat = () => {
 
     return (
         <ChatStyles>
-            <div>Chat</div>
             <button onClick={() => logoutHandler()}>Log out</button>
         </ChatStyles>
     );
