@@ -12,6 +12,9 @@ const storeSchema = new mongoose.Schema({
     password: {
         type: String
     },
+    hashedPassword: {
+        type: String
+    },
     imageUrl: {
         type: String
     }

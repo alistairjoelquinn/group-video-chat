@@ -17,7 +17,15 @@ module.exports.logout = (req, res) => {
 };
 
 module.exports.authenticateUser = async (req, res) => {
-    console.log('req.body: ', req.body);
+    const { username, password } = req.body;
+    const store = await Store.findOne({ username: username });
+    const identified = await compare(password, store.hashedPassword);
+    if (identified) {
+        req.session.userId = store._id;
+        res.sendFile(path.join(__dirname, "..", "..", "client", "index.html"));
+    } else {
+        res.redirect(500, '/login');
+    }
 };
 
 module.exports.getUserData = async (req, res) => {
