@@ -20,6 +20,4 @@ server.listen(
     process.env.PORT || 3001, () => console.log(`Server listening`)
 );
 
-io.on('connection', function (socket) {
-    console.log(`socket with the id ${socket.id} is now connected`);
-});
+require('./controllers/socketController')(io);
