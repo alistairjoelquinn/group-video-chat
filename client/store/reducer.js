@@ -41,7 +41,8 @@ const initialState = {
         userId: '',
         name: '',
         image: ''
-    }
+    },
+    chatMessages: []
 };
 
 export default (state = initialState, action) => {
@@ -81,6 +82,21 @@ export default (state = initialState, action) => {
             ...state,
             allUsers: updatedAllUsers,
             currentUser: {}
+        };
+    }
+    if (action.type === "GET_MESSAGES") {
+        return {
+            ...state,
+            chatMessages: action.msgs
+        };
+    }
+    if (action.type === "CHAT_MESSAGE") {
+        return {
+            ...state,
+            chatMessages: [
+                ...state.chatMessages,
+                action.msg
+            ]
         };
     }
     return state;

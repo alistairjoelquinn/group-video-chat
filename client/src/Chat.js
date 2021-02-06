@@ -29,6 +29,7 @@ const Chat = () => {
     return (
         <ChatStyles>
             <button onClick={() => logoutHandler()}>Log out</button>
+
         </ChatStyles>
     );
 };

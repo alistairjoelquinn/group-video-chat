@@ -19,3 +19,21 @@ export const logUserOut = () => {
         });
     };
 };
+
+export const getMessages = msgs => {
+    return async dispatch => {
+        dispatch({
+            type: "GET_MESSAGES",
+            msgs
+        });
+    };
+};
+
+export const chatMessage = msg => {
+    return async dispatch => {
+        dispatch({
+            type: "CHAT_MESSAGE",
+            msg
+        });
+    };
+};

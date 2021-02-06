@@ -1,5 +1,10 @@
 const express = require("express");
 const app = express();
+const server = require('http').Server(app);
+const io = require('socket.io')(server, {
+    allowRequest: (req, callback) =>
+        callback(null, req.headers.referer.startsWith("http://localhost:3000"))
+});
 const compression = require("compression");
 const path = require("path");
 const csurf = require('csurf');
@@ -12,6 +17,9 @@ const { developmentErrors, productionErrors } = require('./handlers/errorHandler
 app.use(express.json());
 app.use(compression());
 app.use(cookieSessionMiddleware);
+io.use(function (socket, next) {
+    cookieSessionMiddleware(socket.request, socket.request.res, next);
+});
 app.use(csurf());
 app.use(function (req, res, next) {
     res.cookie('mytoken', req.csrfToken());
@@ -27,4 +35,6 @@ if (app.get('env') === 'development') {
     app.use(productionErrors);
 }
 
-module.exports = app;
+module.exports = server;
+
+require('./controllers/socketController')(io);
