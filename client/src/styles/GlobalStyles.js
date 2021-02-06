@@ -10,6 +10,9 @@ const GlobalStyles = createGlobalStyle`
     --black: #191923;
     --white: #FBFEF9;
 }
+* {
+    box-sizing: border-box;
+}
 html {
     font-size: 10px;
     -webkit-touch-callout: none; /* iOS Safari */
