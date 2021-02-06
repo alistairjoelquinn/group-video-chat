@@ -8,6 +8,7 @@ const cookieSessionMiddleware = cookieSession(require('./env/cookie-secrets'));
 const routes = require('./routes');
 const { developmentErrors, productionErrors } = require('./handlers/errorHandlers');
 
+app.use(express.json());
 app.use(compression());
 app.use(cookieSessionMiddleware);
 app.use(express.static(path.join(__dirname, "..", "client", "public")));

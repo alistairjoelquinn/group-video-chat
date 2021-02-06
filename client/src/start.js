@@ -4,7 +4,7 @@ import Login from './Login';
 
 let elem;
 
-if (location.pathname === '/welcome') {
+if (location.pathname === '/login') {
     elem = <Login />;
 } else {
     elem = <App />;
