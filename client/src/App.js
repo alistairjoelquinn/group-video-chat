@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import 'normalize.css';
-import axios from 'axios';
+
+import { getUserData } from '../../server/controllers/appController';
 
 const AppStyles = styled.div`
     display: flex;
@@ -22,12 +24,10 @@ const AppStyles = styled.div`
 `;
 
 export default function App() {
+    const dispatch = useDispatch();
+
     useEffect(() => {
-        (async () => {
-            const { data } = await axios.get('/get-user-data');
-            console.log('data on page load: ', data);
-        }
-        )();
+        dispatch(getUserData());
     }, []);
 
     return (
