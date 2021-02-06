@@ -19,11 +19,15 @@ module.exports.logout = (req, res) => {
 module.exports.authenticateUser = async (req, res) => {
     const { username, password } = req.body;
     const store = await Store.findOne({ username: username });
-    const identified = await compare(password, store.hashedPassword);
-    if (identified) {
-        req.session.userId = store._id;
-        res.sendFile(path.join(__dirname, "..", "..", "client", "index.html"));
+    if (!store) {
+        res.json({ error: 'Oops, you made a mistake!' });
     } else {
-        res.redirect(500, '/login');
+        const identified = await compare(password, store.hashedPassword);
+        if (identified) {
+            req.session.userId = store._id;
+            res.sendFile(path.join(__dirname, "..", "..", "client", "index.html"));
+        } else {
+            res.json({ error: 'Oops, you made a mistake!' });
+        }
     }
 };

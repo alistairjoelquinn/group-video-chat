@@ -14,27 +14,30 @@ const LoginStyles = styled.div`
     width: 100vw;
     background-color: var(--dark);
     color: var(--yellow);
+    font-family: bebasneue;
     h1 {
-        font-family: bebasneue;
         font-size: 6rem;
         margin-bottom: 2rem;
     }
-    div {
+    .error {
+        color: var(--yellow);
+        margin-bottom: 2rem;
+    }
+    div > form {
         display: flex;
         flex-direction: column;
         height: 30vh;
         align-items: center;
         justify-content: space-between;
-        font-family: pangolin;
         font-size: 4rem;
         font-weight: bold;
         input {
+            font-family: pangolin;
             font-size: 2rem;
             height: 4rem;
         }
         button {
-        font-size: 4rem;
-            font-family: bebasneue;
+            font-size: 4rem;
         }
     }
 `;
