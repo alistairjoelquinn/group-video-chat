@@ -12,5 +12,9 @@ module.exports.serveApplication = (req, res) => {
 
 module.exports.getUserData = async (req, res) => {
     const { name, imageUrl, _id } = await Store.findOne({ _id: req.session.userId });
-    res.json({ name, imageUrl, _id });
+    res.json({
+        userId: _id,
+        name,
+        image: imageUrl,
+    });
 };

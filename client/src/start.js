@@ -14,7 +14,6 @@ let elem;
 
 if (location.pathname === '/login') {
     elem = <Login />;
-
 } else {
     elem = (
         <Provider store={store}>

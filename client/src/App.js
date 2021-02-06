@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import 'normalize.css';
 
-import { getUserData } from '../../server/controllers/appController';
+import { retrieveUserData } from '../store/actions';
 
 const AppStyles = styled.div`
     display: flex;
@@ -27,7 +27,7 @@ export default function App() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getUserData());
+        dispatch(retrieveUserData());
     }, []);
 
     return (
