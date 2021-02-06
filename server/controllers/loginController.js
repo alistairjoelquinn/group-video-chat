@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Store = mongoose.model('Store');
 const path = require('path');
-const { hash, compare } = require('../utils/auth');
+const { compare } = require('../utils/auth');
 
 module.exports.login = (req, res) => {
     if (req.session.userId) {
@@ -26,9 +26,4 @@ module.exports.authenticateUser = async (req, res) => {
     } else {
         res.redirect(500, '/login');
     }
-};
-
-module.exports.getUserData = async (req, res) => {
-    const userData = await Store.find();
-    res.json({ userData });
 };

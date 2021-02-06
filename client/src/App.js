@@ -25,7 +25,7 @@ export default function App() {
     useEffect(() => {
         (async () => {
             const { data } = await axios.get('/get-user-data');
-            console.log('data on page load: ', data.message);
+            console.log('data on page load: ', data);
         }
         )();
     }, []);
