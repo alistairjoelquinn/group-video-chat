@@ -18,7 +18,7 @@ const Typography = createGlobalStyle`
     src: url(${fredokaone});
   }
   html {
-    font-family: orbitron, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: pangolin, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: var(--white);
   }
   p, li {
