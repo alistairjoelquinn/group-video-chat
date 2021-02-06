@@ -1,9 +1,8 @@
-import { useState } from 'react';
-import axios from 'axios';
 import styled from 'styled-components';
 
 import Typography from './styles/Typography';
 import GlobalStyles from './styles/GlobalStyles';
+import LoginFields from './LoginFields';
 
 const LoginStyles = styled.div`
     display: flex;
@@ -26,52 +25,27 @@ const LoginStyles = styled.div`
         height: 30vh;
         align-items: center;
         justify-content: space-between;
-        font-family: bebasneue;
+        font-family: pangolin;
         font-size: 4rem;
         font-weight: bold;
+        input {
+            font-size: 2rem;
+            height: 4rem;
+        }
+        button {
+        font-size: 4rem;
+            font-family: bebasneue;
+        }
     }
 `;
 
 const Login = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState(null);
-
-    const submitHandler = () => {
-        axios
-            .post('/login', { username, password })
-            .then(() => location.replace('/'))
-            .catch(err => setError(err.message));
-    };
-
     return (
         <LoginStyles>
             <GlobalStyles />
             <Typography />
             <h1>Please identify yourself Quinn!</h1>
-            <div>
-                {error && (
-                    <div className="error">Oops! You made a mistake.</div>
-                )}
-                <input
-                    name="username"
-                    type="text"
-                    placeholder="Username..."
-                    onChange={e => setUsername(e.target.value)}
-                    required
-                />
-                <input
-                    name="password"
-                    type="password"
-                    placeholder="Password..."
-                    onChange={e => setPassword(e.target.value)}
-                    required
-                />
-                <button onClick={() => submitHandler()}>
-                    Login
-                </button>
-            </div>
-
+            <LoginFields />
         </LoginStyles>
     );
 };

@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
-  :root {
+:root {
     --dark: #31393C;
     --dark-blue: #2176FF;
     --light-blue: #33A1FD;
@@ -9,20 +9,29 @@ const GlobalStyles = createGlobalStyle`
     --orange: #F79824;
     --black: #191923;
     --white: #FBFEF9;
-  }
-  html {
+}
+html {
     font-size: 10px;
-  }
-  body {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+}
+body {
     font-size: 2rem;
     overflow: hidden;
-  }
-  button {
+}
+button {
     cursor: pointer;
-  }
-  img {
+}
+img {
     max-width: 100%;
-  }
+}
+*:focus {
+    outline: none;
+}
 `;
 
 export default GlobalStyles;

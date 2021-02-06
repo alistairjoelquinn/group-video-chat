@@ -1,4 +1,4 @@
-import axios from './axios';
+import axios from '../src/axios';
 
 export const retrieveUserData = () => {
     return async dispatch => {
