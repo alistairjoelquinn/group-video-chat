@@ -9,3 +9,13 @@ export const retrieveUserData = () => {
         });
     };
 };
+
+export const logUserOut = () => {
+    return async (dispatch, getState) => {
+        const { currentUser } = getState();
+        dispatch({
+            type: "LOG_USER_OUT",
+            userId: currentUser.userId
+        });
+    };
+};

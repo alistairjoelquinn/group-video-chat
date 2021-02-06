@@ -51,14 +51,30 @@ export default (state = initialState, action) => {
                 return user;
             }
         });
-
-
         return {
             ...state,
             allUsers: updatedAllUsers,
             currentUser: {
                 ...action.data
             }
+        };
+    }
+    if (action.type === "LOG_USER_OUT") {
+        const userIndex = state.allUsers.findIndex(user => user.userId === action.userId);
+        const updatedAllUsers = state.allUsers.map((user, idx) => {
+            if (idx === userIndex) {
+                return {
+                    ...user,
+                    online: false
+                };
+            } else {
+                return user;
+            }
+        });
+        return {
+            ...state,
+            allUsers: updatedAllUsers,
+            currentUser: {}
         };
     }
     return state;
