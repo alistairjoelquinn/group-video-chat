@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Peer from 'peerjs';
+import ReactPlayer from 'react-player/lazy';
 
 import { socket } from './socket';
 
@@ -31,11 +32,9 @@ const SingleVideo = ({ quinn }) => {
     const { userId } = useSelector(state => state.currentUser);
     const roomId = useSelector(state => state.roomId);
     const [thisUser, setThisUser] = useState(false);
+    const [url, setUrl] = useState(null);
+    const [playing, setPlaying] = useState(false);
     const myVideo = useRef();
-
-    const addVideoStream = useCallback((video, stream) => {
-
-    }, []);
 
     useEffect(() => {
         if (userId === quinn.userId) {
@@ -51,7 +50,8 @@ const SingleVideo = ({ quinn }) => {
                 video: true,
                 audio: true
             }).then(stream => {
-                addVideoStream(myVideo, stream);
+                setUrl(stream);
+                setPlaying(true);
             });
         }
     }, [userId]);
@@ -61,9 +61,16 @@ const SingleVideo = ({ quinn }) => {
             {
                 thisUser
                     ?
-                    <video
+                    <ReactPlayer
                         muted={true}
                         ref={myVideo}
+                        url={url}
+                        playing={playing}
+                        width='100%'
+                        height='100%'
+                        onReady={() => console.log('onReady')}
+                        onStart={() => console.log('onStart')}
+                        onPlay={() => console.log('onStart')}
                     />
                     :
                     <>
