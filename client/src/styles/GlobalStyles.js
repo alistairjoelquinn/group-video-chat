@@ -32,6 +32,11 @@ button {
 img {
     max-width: 100%;
 }
+video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
 *:focus {
     outline: none;
 }

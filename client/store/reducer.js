@@ -42,7 +42,8 @@ const initialState = {
         name: '',
         image: ''
     },
-    chatMessages: []
+    chatMessages: [],
+    roomId: 'VdOQgJLdTKSspCx61PoH'
 };
 
 export default (state = initialState, action) => {
