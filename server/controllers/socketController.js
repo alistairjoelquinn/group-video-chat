@@ -12,8 +12,9 @@ module.exports = (io) => {
         if (!socket.request.session.userId) return socket.disconnect(true);
         const { userId } = socket.request.session;
         onlineUsers[userId] = socket.id;
-        console.log('chatMessages: ', chatMessages);
+        io.emit('newUser', userId);
         io.to(socket.id).emit('priorChatMessages', chatMessages);
+        io.to(socket.id).emit('currentlyOnline', Object.keys(onlineUsers));
         console.log('onlineUsers: ', onlineUsers);
 
         socket.on('chatMessage', async msg => {
@@ -24,6 +25,7 @@ module.exports = (io) => {
         socket.on('disconnect', () => {
             delete onlineUsers[userId];
             console.log('onlineUsers: ', onlineUsers);
+            io.emit('userLoggedOff', userId);
             if (!Object.keys(onlineUsers).length) {
                 onlineUsers = {};
             }

@@ -37,3 +37,30 @@ export const chatMessage = msg => {
         });
     };
 };
+
+export const newUser = userId => {
+    return async dispatch => {
+        dispatch({
+            type: "NEW_USER",
+            userId
+        });
+    };
+};
+
+export const userLoggedOff = userId => {
+    return async dispatch => {
+        dispatch({
+            type: "USER_LOGGED_OFF",
+            userId
+        });
+    };
+};
+
+export const currentlyOnline = onlineUsers => {
+    return async dispatch => {
+        dispatch({
+            type: "CURRENTLY_ONLINE",
+            onlineUsers
+        });
+    };
+};

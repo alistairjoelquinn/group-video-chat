@@ -1,6 +1,6 @@
 import io from 'socket.io-client';
 
-import { chatMessage, getMessages } from '../store/actions';
+import { chatMessage, currentlyOnline, getMessages, newUser, userLoggedOff } from '../store/actions';
 
 export let socket;
 
@@ -10,4 +10,7 @@ export const init = ({ dispatch }) => {
     }
     socket.on('priorChatMessages', msgs => dispatch(getMessages(msgs)));
     socket.on('newChatMessage', msg => dispatch(chatMessage(msg)));
+    socket.on('newUser', userId => dispatch(newUser(userId)));
+    socket.on('userLoggedOff', userId => dispatch(userLoggedOff(userId)));
+    socket.on('currentlyOnline', onlineUsers => dispatch(currentlyOnline(onlineUsers)));
 };

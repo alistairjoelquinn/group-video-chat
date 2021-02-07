@@ -66,6 +66,57 @@ export default (state = initialState, action) => {
             }
         };
     }
+    if (action.type === "NEW_USER") {
+        const userIndex = state.allUsers.findIndex(user => user.userId === action.userId);
+        const updatedAllUsers = state.allUsers.map((user, idx) => {
+            if (idx === userIndex) {
+                return {
+                    ...user,
+                    online: true
+                };
+            } else {
+                return user;
+            }
+        });
+        return {
+            ...state,
+            allUsers: updatedAllUsers
+        };
+    }
+    if (action.type === "USER_LOGGED_OFF") {
+        const userIndex = state.allUsers.findIndex(user => user.userId === action.userId);
+        const updatedAllUsers = state.allUsers.map((user, idx) => {
+            if (idx === userIndex) {
+                return {
+                    ...user,
+                    online: false
+                };
+            } else {
+                return user;
+            }
+        });
+        return {
+            ...state,
+            allUsers: updatedAllUsers
+        };
+    }
+    if (action.type === "CURRENTLY_ONLINE") {
+        const newAllUsers = state.allUsers.map(user => {
+            for (let i = 0; i < action.onlineUsers.length; i++) {
+                if (user.userId === action.onlineUsers[i]) {
+                    return {
+                        ...user,
+                        online: true
+                    };
+                }
+            }
+            return user;
+        });
+        return {
+            ...state,
+            allUsers: newAllUsers
+        };
+    }
     if (action.type === "LOG_USER_OUT") {
         const userIndex = state.allUsers.findIndex(user => user.userId === action.userId);
         const updatedAllUsers = state.allUsers.map((user, idx) => {
@@ -85,8 +136,6 @@ export default (state = initialState, action) => {
         };
     }
     if (action.type === "GET_MESSAGES") {
-        console.log('running');
-        console.log('action.msgs: ', action.msgs);
         return {
             ...state,
             chatMessages: action.msgs
