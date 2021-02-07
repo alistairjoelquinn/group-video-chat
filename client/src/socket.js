@@ -13,4 +13,8 @@ export const init = ({ dispatch }) => {
     socket.on('newUser', userId => dispatch(newUser(userId)));
     socket.on('userLoggedOff', userId => dispatch(userLoggedOff(userId)));
     socket.on('currentlyOnline', onlineUsers => dispatch(currentlyOnline(onlineUsers)));
+
+    socket.on('user-connected', userId => {
+        console.log(`User with the id ${userId} just connected`);
+    });
 };

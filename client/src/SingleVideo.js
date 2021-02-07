@@ -35,9 +35,9 @@ const SingleVideo = ({ quinn }) => {
         if (userId === quinn.userId) {
             setThisUser(true);
             console.log('roomId: ', roomId);
+            socket.emit('join-quinn-chat', roomId, 10);
         }
     }, [userId]);
-
 
     return (
         <SingleVideoStyles USER={thisUser} >

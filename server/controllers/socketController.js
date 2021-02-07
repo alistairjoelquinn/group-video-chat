@@ -30,10 +30,10 @@ module.exports = (io) => {
                 onlineUsers = {};
             }
         });
-        socket.on('user-room-join', (roomId, userPeerId) => {
+        socket.on('join-quinn-chat', (roomId, userPeerId) => {
             console.log('roomId, userPeerId: ', roomId, userPeerId);
-            // socket.join(roomId);
-            // socket.to(roomId).broadcast.emit('user-connected', userPeerId);
+            socket.join(roomId);
+            socket.to(roomId).broadcast.emit('user-connected', userPeerId);
             // socket.on('disconnect', () => {
             //     socket.to(roomId).broadcast.emit('user-disconnected', userPeerId);
             // });
