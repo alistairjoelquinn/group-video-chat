@@ -27,6 +27,7 @@
         "cookie-session": "^1.4.0",
         "css-loader": "^5.0.1",
         "csurf": "^1.11.0",
+        "dotenv": "^16.0.0",
         "eslint": "^7.16.0",
         "eslint-plugin-react": "^7.12.4",
         "express": "^4.14.0",

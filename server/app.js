@@ -9,7 +9,10 @@ const compression = require("compression");
 const path = require("path");
 const csurf = require('csurf');
 const cookieSession = require('cookie-session');
-const cookieSessionMiddleware = cookieSession(require('./env/cookie-secrets'));
+const cookieSessionMiddleware = cookieSession({
+    secret: process.env.COOKIE_SECRET,
+    maxAge: process.env.COOKIE_MAXAGE,
+});
 
 const routes = require('./routes');
 const { developmentErrors, productionErrors } = require('./handlers/errorHandlers');

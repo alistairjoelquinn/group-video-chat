@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect(require('./env/db-secrets'), {
+mongoose.connect(process.env.MONGO_DB_SECRET, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
