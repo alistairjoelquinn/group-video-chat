@@ -10,7 +10,7 @@ const path = require("path");
 const csurf = require('csurf');
 const cookieSession = require('cookie-session');
 const cookieSessionMiddleware = cookieSession({
-    secret: process.env.COOKIE_SECRET,
+    keys: [process.env.COOKIE_SECRET],
     maxAge: process.env.COOKIE_MAXAGE,
 });
 

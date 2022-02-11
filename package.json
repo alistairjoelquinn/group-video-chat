@@ -8,7 +8,7 @@
         "dev:client": "webpack serve --mode development",
         "dev:server": "nodemon --watch server --ignore server/uploads server/server.js",
         "dev": "concurrently \"npm:dev:*\" --kill-others",
-        "start": "node server/server.js"
+        "start": "node -r dotenv/config server/server.js"
     },
     "engines": {
         "node": "14"
