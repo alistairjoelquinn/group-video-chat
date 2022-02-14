@@ -19,7 +19,6 @@
         "@babel/polyfill": "^7.4.3",
         "@babel/preset-env": "^7.12.11",
         "@babel/preset-react": "^7.12.10",
-        "axios": "^0.21.1",
         "babel-loader": "^8.2.2",
         "bcrypt": "^5.0.0",
         "compression": "^1.7.0",

@@ -1,5 +1,4 @@
 import { useCallback, useState } from "react";
-import axios from './axios';
 
 const LoginFields = () => {
     const [username, setUsername] = useState('');
@@ -12,8 +11,11 @@ const LoginFields = () => {
             setError('You need to fill out both fields you muppet...');
             return;
         }
-        axios
-            .post('/login', { username, password })
+        fetch('/login', {
+            method: 'POST',
+            body: JSON.stringify({ username, password })
+        })
+            .then(res => res.json())
             .then(({ data }) => {
                 if (data.error) {
                     setError(data.error);

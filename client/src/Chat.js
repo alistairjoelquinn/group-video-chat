@@ -5,7 +5,6 @@ import { Logout } from 'heroicons-react';
 import { v4 } from 'uuid';
 
 import { logUserOut } from "../store/actions";
-import axios from './axios';
 import { socket } from './socket';
 
 const ChatStyles = styled.div`
@@ -59,7 +58,8 @@ const Chat = () => {
     }, [chatMessages]);
 
     const logoutHandler = useCallback(async () => {
-        const { data } = await axios.get('/logout');
+        const res = await fetch('/logout');
+        const { data } = await res.json();
         if (data.loggedOut) {
             dispatch(logUserOut());
             location.replace('/');
