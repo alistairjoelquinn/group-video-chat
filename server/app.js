@@ -12,6 +12,7 @@ const cookieSession = require('cookie-session');
 const cookieSessionMiddleware = cookieSession({
     keys: [process.env.COOKIE_SECRET],
     maxAge: process.env.COOKIE_MAXAGE,
+    sameSite: true,
 });
 
 const routes = require('./routes');
