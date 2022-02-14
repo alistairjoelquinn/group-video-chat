@@ -1,8 +1,7 @@
-import axios from '../src/axios';
-
 export const retrieveUserData = () => {
     return async dispatch => {
-        const { data } = await axios.get('/get-user-data');
+        const res = await fetch('/get-user-data');
+        const { data } = await res.json();
         dispatch({
             type: "GET_USER_DATA",
             data

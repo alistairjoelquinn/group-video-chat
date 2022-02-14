@@ -7,7 +7,6 @@ const io = require('socket.io')(server, {
 });
 const compression = require("compression");
 const path = require("path");
-const csurf = require('csurf');
 const cookieSession = require('cookie-session');
 const cookieSessionMiddleware = cookieSession({
     keys: [process.env.COOKIE_SECRET],
@@ -23,11 +22,6 @@ app.use(compression());
 app.use(cookieSessionMiddleware);
 io.use(function (socket, next) {
     cookieSessionMiddleware(socket.request, socket.request.res, next);
-});
-app.use(csurf());
-app.use(function (req, res, next) {
-    res.cookie('mytoken', req.csrfToken());
-    next();
 });
 app.use(express.static(path.join(__dirname, "..", "client", "public")));
 
