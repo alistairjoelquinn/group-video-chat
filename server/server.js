@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+console.log('process.env.MONGO_DB_SECRET: ', process.env.MONGO_DB_SECRET);
+console.log('process.env.COOKIE_SECRET: ', process.env.COOKIE_SECRET);
+console.log('process.env.COOKIE_MAXAGE: ', process.env.COOKIE_MAXAGE);
 mongoose.connect(process.env.MONGO_DB_SECRET, {
     useNewUrlParser: true,
     useUnifiedTopology: true
