@@ -18,7 +18,10 @@ module.exports.logout = (req, res) => {
 
 module.exports.authenticateUser = async (req, res) => {
     const { username, password } = req.body;
-    const store = await Store.findOne({ username: username });
+    const store = await Store.findOne({ username });
+    console.log('store: ', store);
+    const allStuff = await Store.find();
+    console.log('allStuff: ', allStuff);
     if (!store) {
         res.json({ error: 'Oops, you made a mistake!' });
     } else {

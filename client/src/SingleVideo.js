@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import Peer from 'peerjs';
+// import Peer from 'peerjs';
 import ReactPlayer from 'react-player/lazy';
 
 import { socket } from './socket';
@@ -38,21 +38,21 @@ const SingleVideo = ({ quinn }) => {
 
     useEffect(() => {
         if (userId === quinn.userId) {
-            const peer = new Peer(undefined, {
-                host: '/',
-                port: '3002'
-            });
-            setThisUser(true);
-            peer.on('open', id => {
-                socket.emit('join-quinn-chat', roomId, id);
-            });
-            navigator.mediaDevices.getUserMedia({
-                video: true,
-                audio: true
-            }).then(stream => {
-                setUrl(stream);
-                setPlaying(true);
-            });
+            // const peer = new Peer(undefined, {
+            //     host: '/',
+            //     port: '3002'
+            // });
+            // setThisUser(true);
+            // peer.on('open', id => {
+            //     socket.emit('join-quinn-chat', roomId, id);
+            // });
+            // navigator.mediaDevices.getUserMedia({
+            //     video: true,
+            //     audio: true
+            // }).then(stream => {
+            //     setUrl(stream);
+            //     setPlaying(true);
+            // });
         }
     }, [userId]);
 

@@ -1,11 +1,11 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 
 const LoginFields = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
 
-    const submitHandler = useCallback((e) => {
+    const submitHandler = (e) => {
         e.preventDefault();
         if (!username || !password) {
             setError('You need to fill out both fields you muppet...');
@@ -16,7 +16,8 @@ const LoginFields = () => {
             body: JSON.stringify({ username, password })
         })
             .then(res => res.json())
-            .then(({ data }) => {
+            .then((data) => {
+                console.log('data: ', data);
                 if (data.error) {
                     setError(data.error);
                     return;
@@ -24,7 +25,7 @@ const LoginFields = () => {
                 location.replace('/');
             })
             .catch(err => setError(err.message));
-    }, [username, password, setError]);
+    };
 
     return (
         <div>
